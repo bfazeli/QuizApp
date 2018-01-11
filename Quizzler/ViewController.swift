@@ -57,6 +57,7 @@ class ViewController: UIViewController {
             questionLabel.text = allQuestions.list[questionNumber].questionText
             updateUI()
         } else {
+            scoreLabel.text = "Final Score: \(score)"
             let alert = UIAlertController(title: "Awesome!", message: "You are finished, would you like to start over?", preferredStyle: .alert)
             
             let restartAction = UIAlertAction(title: "Restart", style: .default, handler: { (UIAlertAction) in
@@ -74,9 +75,10 @@ class ViewController: UIViewController {
         let correctAnswer = allQuestions.list[questionNumber].answer
         
         if correctAnswer == pickedAnswer {
+            ProgressHUD.showSuccess("Correct!")
             score += 1
         } else {
-            print("Wrong!")
+            ProgressHUD.showError("Wrong!")
         }
     }
     
